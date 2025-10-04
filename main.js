@@ -24,6 +24,8 @@ const showNotificationError = document.getElementById(
   'show-notification-error',
 );
 
+const refreshButton = document.getElementById('refresh');
+
 notificationMessageSuccess.textContent = 'Напоминание об успешном выполнении!';
 notificationMessageError.textContent = 'Напоминание об ошибочном выполнении!';
 
@@ -32,6 +34,12 @@ function successMessage() {
   setTimeout(() => {
     notificationBlockSuccess.setAttribute('active', '');
   }, 1);
+  setTimeout(() => {
+    notificationBlockSuccess.removeAttribute('active');
+    setTimeout(() => {
+      notificationBlockSuccess.setAttribute('hidden', '');
+    }, 300);
+  }, 2000);
 }
 
 function errorMessage(err) {
@@ -40,6 +48,12 @@ function errorMessage(err) {
   setTimeout(() => {
     notificationBlockError.setAttribute('active', '');
   }, 1);
+  setTimeout(() => {
+    notificationBlockError.removeAttribute('active');
+    setTimeout(() => {
+      notificationBlockError.setAttribute('hidden', '');
+    }, 300);
+  }, 2000);
 }
 
 notificationCloseSuccess.addEventListener('click', () => {
@@ -65,6 +79,8 @@ function loadImages(retryCount = 0) {
   const loader = document.getElementById('loader');
   const gallery = document.getElementById('gallery');
 
+  refreshButton.disabled = true;
+
   loader.style.display = 'block';
   gallery.style.display = 'none';
 
@@ -73,6 +89,7 @@ function loadImages(retryCount = 0) {
       if (!response.ok) {
         throw new Error('Ошибка сервера');
       }
+      refreshButton.disabled = false;
       return response.json();
     })
     .then((images) => {
@@ -91,6 +108,7 @@ function loadImages(retryCount = 0) {
       } else {
         loader.style.display = 'none';
         errorMessage('Не удалось загрузить изображения');
+        refreshButton.disabled = false;
       }
     });
 }
@@ -108,12 +126,5 @@ function renderImages(images) {
 
 document.addEventListener('DOMContentLoaded', () => {
   loadImages();
-
-  const refreshButton = document.createElement('button');
-  refreshButton.textContent = 'Обновить галерею';
-  refreshButton.style.width = '300px';
-  refreshButton.style.padding = '10px';
-  refreshButton.style.borderRadius = '10px';
   refreshButton.addEventListener('click', () => loadImages());
-  document.querySelector('.image-container').prepend(refreshButton);
 });

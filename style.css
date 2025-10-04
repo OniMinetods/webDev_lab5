@@ -78,7 +78,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  padding: 50px;
+  padding: 30px;
   margin: 50px auto;
   border-radius: 20px;
   background-color: rgb(35, 35, 35);
@@ -93,4 +93,9 @@ body {
   width: 250px;
   height: 250px;
   border-radius: 20px;
+}
+
+#refresh {
+  padding: 10px 20px;
+  border-radius: 10px;
 }
