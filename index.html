@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Lab 5</title>
+  </head>
+  <body>
+    <div class="buttons">
+      <button id="show-notification-success">Показать success</button>
+      <button id="show-notification-error">Показать error</button>
+    </div>
+    <div class="notification">
+      <div class="notification-block-success" hidden>
+        <span id="notification-message-success"></span>
+        <button class="notification-close-success">✕</button>
+      </div>
+      <div class="notification-block-error" hidden>
+        <span id="notification-message-error"></span>
+        <button class="notification-close-error">✕</button>
+      </div>
+    </div>
+    <div class="image-container">
+      <div class="images" id="gallery"></div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

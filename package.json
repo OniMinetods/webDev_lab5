@@ -1,0 +1,25 @@
+{
+  "name": "webdev_lab4",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OniMinetods/webDev_lab4.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OniMinetods/webDev_lab4/issues"
+  },
+  "homepage": "https://github.com/OniMinetods/webDev_lab4#readme",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.35.0",
+    "eslint": "^9.35.0",
+    "globals": "^16.3.0"
+  }
+}
