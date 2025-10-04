@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Lab 5</title>
   </head>
@@ -22,8 +26,12 @@
       </div>
     </div>
     <div class="image-container">
+      <div class="spinner-border" id="loader" role="status">
+        <span class="sr-only"></span>
+      </div>
       <div class="images" id="gallery"></div>
     </div>
     <script src="main.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

@@ -75,7 +75,9 @@ body {
 
 .image-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   padding: 50px;
   margin: 50px auto;
   border-radius: 20px;

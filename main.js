@@ -62,7 +62,11 @@ showNotificationError.addEventListener('click', errorMessage);
 
 function loadImages(retryCount = 0) {
   const maxRetry = 3;
+  const loader = document.getElementById('loader');
   const gallery = document.getElementById('gallery');
+
+  loader.style.display = 'block';
+  gallery.style.display = 'none';
 
   fetch('http://127.0.0.1:8000/images')
     .then((response) => {
@@ -72,16 +76,20 @@ function loadImages(retryCount = 0) {
       return response.json();
     })
     .then((images) => {
+      loader.style.display = 'none';
+      gallery.style.display = 'flex';
+
       if (images.length === 0) {
         gallery.innerHTML = '<p>Изображения не найдены</p>';
       } else {
         renderImages(images);
       }
     })
-    .catch((error) => {
+    .catch(() => {
       if (retryCount < maxRetry) {
-        setTimeout(() => loadImages(retryCount + 1), 1000);
+        setTimeout(() => loadImages(retryCount + 1), 200);
       } else {
+        loader.style.display = 'none';
         errorMessage('Не удалось загрузить изображения');
       }
     });
@@ -100,4 +108,12 @@ function renderImages(images) {
 
 document.addEventListener('DOMContentLoaded', () => {
   loadImages();
+
+  const refreshButton = document.createElement('button');
+  refreshButton.textContent = 'Обновить галерею';
+  refreshButton.style.width = '300px';
+  refreshButton.style.padding = '10px';
+  refreshButton.style.borderRadius = '10px';
+  refreshButton.addEventListener('click', () => loadImages());
+  document.querySelector('.image-container').prepend(refreshButton);
 });
